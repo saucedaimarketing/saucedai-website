@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  /* Dark-tech canvas — near-black, never pure #000 */
+  --void: #0a0a0c;      /* page canvas */
+  --panel: #101013;     /* raised surfaces / cards */
+  --panel-2: #141418;   /* hover / second elevation */
+  --edge: #222226;      /* hairline borders */
+  --edge-strong: #2e2e34;
+
+  /* Text — cool neutral, high contrast */
+  --fg: #ececee;
+  --fg-dim: #8f8f98;
+  --fg-faint: #7a7a84;
+
+  /* The one accent. Used sparingly: CTAs, small UI details, glow. */
+  --gold: #c9a84c;
+  --gold-hover: #dbb95e;
+  --gold-glow: rgba(201, 168, 76, 0.25);
+}
+
+@theme inline {
+  --color-void: var(--void);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-edge: var(--edge);
+  --color-edge-strong: var(--edge-strong);
+
+  --color-fg: var(--fg);
+  --color-fg-dim: var(--fg-dim);
+  --color-fg-faint: var(--fg-faint);
+
+  --color-gold: var(--gold);
+  --color-gold-hover: var(--gold-hover);
+
+  --font-display: var(--font-archivo);
+  --font-sans: var(--font-manrope);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--void);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
