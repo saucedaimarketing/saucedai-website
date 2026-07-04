@@ -16,16 +16,16 @@ export const metadata: Metadata = {
 
 const ANGLES = [
   {
-    title: "The Double-Take",
-    body: "A meat-eater takes a bite, reacts, then finds out what he just ate. The surprise is the proof.",
+    title: "It's Not the Patty, It's the Cook",
+    body: "The patty is the same one half of NYC uses. The difference is what a real cook does to it — a truth so honest it disarms the skeptic instantly.",
   },
   {
-    title: "Order It Over Beef",
-    body: "Not the vegan option — the option. Positioned as a straight-up better burger, full stop.",
+    title: "The Cross-Section",
+    body: "Cut it open, no explanation yet — just the seared, diner-style crust. The craving lands before anyone finds out it's plant-based.",
   },
   {
-    title: "Real Char. Real Crust. No Beef.",
-    body: "Leads with the sear and the texture — the parts of a great burger people actually taste first.",
+    title: "The Burger a Meat-Eater Orders on Purpose",
+    body: "Not the guilt-free option — the better one. Reframes the choice as an upgrade, not a compromise.",
   },
 ];
 
@@ -100,6 +100,13 @@ export default function CaseStudy() {
                 </TiltCard>
               ))}
             </div>
+
+            <Link
+              href="/how-it-works#month-one"
+              className="mt-8 inline-block text-sm font-medium text-fg-dim transition-colors hover:text-fg"
+            >
+              See what the first month produced →
+            </Link>
 
             <div className="mt-14 rounded-2xl border border-dashed border-edge-strong bg-panel/60 p-6">
               <p className="text-sm leading-relaxed text-fg-dim italic">

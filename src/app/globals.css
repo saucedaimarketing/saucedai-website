@@ -55,3 +55,33 @@
   outline: 2px solid var(--gold);
   outline-offset: 3px;
 }
+
+/* Dark, gold-accented scrollbars — Firefox */
+* {
+  scrollbar-color: var(--edge-strong) var(--panel);
+  scrollbar-width: thin;
+}
+
+/* Dark, gold-accented scrollbars — WebKit/Blink */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--panel);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--edge-strong);
+  border-radius: 999px;
+  border: 2px solid var(--panel);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--gold);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--panel);
+}
