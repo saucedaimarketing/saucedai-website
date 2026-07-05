@@ -5,9 +5,26 @@ import PageHero from "@/components/PageHero";
 import { BackgroundPaths } from "@/components/ui/background-paths";
 import { TypewriterHeading } from "@/components/ui/typewriter-heading";
 
+const TITLE = "About — Sauced";
+const DESCRIPTION = "Why Sauced exists, and the LA creator network behind it.";
+
 export const metadata: Metadata = {
-  title: "About — Sauced",
-  description: "Why Sauced exists, and the LA creator network behind it.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/about",
+    type: "website",
+    images: [{ url: "/hero-poster.jpg", width: 1920, height: 1080 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/hero-poster.jpg"],
+  },
 };
 
 export default function About() {

@@ -20,7 +20,7 @@ const DESCRIPTION =
   "Sauced turns your restaurant's story into content people crave — deep research, a full growth strategy, and shoot-ready scripts, every month.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://saucedai.com"),
+  metadataBase: new URL("https://www.saucedai.io"),
   title: TITLE,
   description: DESCRIPTION,
   openGraph: {
@@ -37,6 +37,25 @@ export const metadata: Metadata = {
   },
 };
 
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Sauced",
+  url: "https://www.saucedai.io",
+  logo: "https://www.saucedai.io/logo.png",
+  image: "https://www.saucedai.io/hero-poster.jpg",
+  description: DESCRIPTION,
+  email: "saucedaimarketing@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Los Angeles",
+    addressRegion: "CA",
+    addressCountry: "US",
+  },
+  areaServed: "US",
+  priceRange: "$2000-$2400",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -48,6 +67,10 @@ export default function RootLayout({
       className={`${archivo.variable} ${manrope.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-void text-fg font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+        />
         <ScrollProgress />
         {children}
       </body>

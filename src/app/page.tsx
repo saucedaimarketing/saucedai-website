@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
@@ -8,6 +9,29 @@ import { ButtonColorful } from "@/components/ui/button-colorful";
 import { TypewriterHeading } from "@/components/ui/typewriter-heading";
 import { TiltCard } from "@/components/ui/tilt-card";
 import { CountUp } from "@/components/ui/count-up";
+
+const TITLE = "Sauced — AI-Powered Restaurant Growth";
+const DESCRIPTION =
+  "Sauced turns your restaurant's story into content people crave — deep research, a full growth strategy, and shoot-ready scripts, every month.";
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/",
+    type: "website",
+    images: [{ url: "/hero-poster.jpg", width: 1920, height: 1080 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/hero-poster.jpg"],
+  },
+};
 
 const STEPS = [
   {

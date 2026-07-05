@@ -8,10 +8,27 @@ import { ButtonColorful } from "@/components/ui/button-colorful";
 import { TypewriterHeading } from "@/components/ui/typewriter-heading";
 import HowItWorksSteps from "@/components/HowItWorksSteps";
 
+const TITLE = "How It Works — Sauced";
+const DESCRIPTION =
+  "Research, strategy, and shoot-ready scripts — the Sauced system, every month.";
+
 export const metadata: Metadata = {
-  title: "How It Works — Sauced",
-  description:
-    "Research, strategy, and shoot-ready scripts — the Sauced system, every month.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/how-it-works" },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/how-it-works",
+    type: "website",
+    images: [{ url: "/hero-poster.jpg", width: 1920, height: 1080 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/hero-poster.jpg"],
+  },
 };
 
 export default function HowItWorks() {

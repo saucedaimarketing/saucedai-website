@@ -14,6 +14,7 @@ import {
   useMotionValueEvent,
   type MotionValue,
 } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { CountUp } from "@/components/ui/count-up";
 import { ScrollRevealCard } from "@/components/ui/scroll-reveal-card";
@@ -204,11 +205,15 @@ function StepHeading({
   title,
   badge,
   body,
+  expanded,
+  onToggle,
 }: {
   n: string;
   title: string;
   badge?: string;
   body: string;
+  expanded?: boolean;
+  onToggle?: () => void;
 }) {
   return (
     <div>
@@ -224,6 +229,24 @@ function StepHeading({
             {badge}
           </span>
         )}
+        {onToggle && (
+          <button
+            type="button"
+            onClick={onToggle}
+            aria-expanded={expanded}
+            aria-label={expanded ? "Hide details" : "Show details"}
+            className="ml-auto flex shrink-0 items-center gap-1.5 rounded-full border border-edge-strong px-3 py-1.5 text-[11px] font-semibold tracking-[0.1em] text-fg-dim uppercase transition-colors hover:border-gold hover:text-gold"
+          >
+            {expanded ? "Less" : "More"}
+            <ChevronDown
+              className={cn(
+                "h-3.5 w-3.5 transition-transform",
+                expanded && "rotate-180"
+              )}
+              aria-hidden="true"
+            />
+          </button>
+        )}
       </div>
       <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-fg-dim lg:text-base">
         {body}
@@ -232,126 +255,147 @@ function StepHeading({
   );
 }
 
-function Step0Content() {
+interface StepContentProps {
+  expanded?: boolean;
+  onToggle?: () => void;
+}
+
+function Step0Content({ expanded = true, onToggle }: StepContentProps) {
   return (
     <div>
       <StepHeading
         n="01"
         title="The research pipeline"
         body="Before a single script gets written, your restaurant goes through an 8-step research system — the same one that produced everything on the following pages."
+        expanded={expanded}
+        onToggle={onToggle}
       />
-      <div className="mt-8 border-t border-edge pt-8">
-        <ProofLabel>The full pipeline, in order</ProofLabel>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {RESEARCH_PIPELINE.map((step) => (
-            <div
-              key={step.n}
-              className="rounded-2xl border border-edge bg-panel-2/60 p-5 lg:p-6"
-            >
-              <p className="text-[11px] font-semibold tracking-[0.15em] text-gold uppercase">
-                {step.n}
-              </p>
-              <p className="mt-1.5 font-display text-[15px] font-bold tracking-tight text-fg lg:text-base">
-                {step.title}
-              </p>
-              <p className="mt-2 text-[13px] leading-relaxed text-fg-dim">
-                {step.note}
-              </p>
-            </div>
-          ))}
+      {expanded && (
+        <div className="mt-8 border-t border-edge pt-8">
+          <ProofLabel>The full pipeline, in order</ProofLabel>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {RESEARCH_PIPELINE.map((step) => (
+              <div
+                key={step.n}
+                className="rounded-2xl border border-edge bg-panel-2/60 p-5 lg:p-6"
+              >
+                <p className="text-[11px] font-semibold tracking-[0.15em] text-gold uppercase">
+                  {step.n}
+                </p>
+                <p className="mt-1.5 font-display text-[15px] font-bold tracking-tight text-fg lg:text-base">
+                  {step.title}
+                </p>
+                <p className="mt-2 text-[13px] leading-relaxed text-fg-dim">
+                  {step.note}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
 
-function Step1Content() {
+function Step1Content({ expanded = true, onToggle }: StepContentProps) {
   return (
     <div>
       <StepHeading
         n="02"
         title="Deep research"
         body="We study your restaurant, your local market, and the customer who's already deciding between you and the place next door — real reviews, real competitors, real gaps."
+        expanded={expanded}
+        onToggle={onToggle}
       />
-      <div className="mt-8 border-t border-edge pt-8">
-        <ProofLabel>Five named customer profiles it produced</ProofLabel>
-        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {AVATARS.map((a) => (
-            <div
-              key={a.name}
-              className="rounded-2xl border border-edge bg-panel-2/60 p-5 lg:p-7"
-            >
-              <p className="font-display text-base font-bold tracking-tight text-fg lg:text-lg">
-                {a.name}
-              </p>
-              <p className="mt-1 text-[11px] font-semibold tracking-[0.15em] text-gold uppercase">
-                {a.role}
-              </p>
-              <p className="mt-1 text-xs text-fg-faint">{a.stats}</p>
-              <p className="mt-4 text-sm leading-relaxed text-fg-dim italic">
-                {a.hook}
-              </p>
-            </div>
-          ))}
+      {expanded && (
+        <div className="mt-8 border-t border-edge pt-8">
+          <ProofLabel>Five named customer profiles it produced</ProofLabel>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {AVATARS.map((a) => (
+              <div
+                key={a.name}
+                className="rounded-2xl border border-edge bg-panel-2/60 p-5 lg:p-7"
+              >
+                <p className="font-display text-base font-bold tracking-tight text-fg lg:text-lg">
+                  {a.name}
+                </p>
+                <p className="mt-1 text-[11px] font-semibold tracking-[0.15em] text-gold uppercase">
+                  {a.role}
+                </p>
+                <p className="mt-1 text-xs text-fg-faint">{a.stats}</p>
+                <p className="mt-4 text-sm leading-relaxed text-fg-dim italic">
+                  {a.hook}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
 
-function Step2Content() {
+function Step2Content({ expanded = true, onToggle }: StepContentProps) {
   return (
     <div>
       <StepHeading
         n="03"
         title="A complete growth strategy"
         body="The mechanisms that make your food genuinely different, the specific customers who'll respond to them, and the angles that connect the two into content worth making."
+        expanded={expanded}
+        onToggle={onToggle}
       />
-      <div className="mt-8 border-t border-edge pt-8">
-        <ProofLabel>The one sentence the strategy is built on</ProofLabel>
-        <p className="mt-5 max-w-3xl border-l-2 border-gold pl-6 font-display text-xl font-bold leading-snug tracking-tight text-fg sm:text-2xl lg:text-3xl">
-          A burger a meat-eater orders on purpose &mdash; the plant-based
-          part is the twist, not the pitch.
-        </p>
-        <p className="mt-8 text-[11px] font-semibold tracking-[0.2em] text-fg-faint uppercase">
-          Ten angles scored &mdash; top three sequenced into a persuasion arc
-        </p>
-        <div className="mt-5 space-y-4">
-          {ANGLES.map((a) => (
-            <div
-              key={a.rank}
-              className="rounded-2xl border border-edge bg-panel-2/60 p-5 lg:p-7"
-            >
-              <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
-                <span className="font-display text-sm font-bold tracking-widest text-gold">
-                  {a.rank}
-                </span>
-                <h3 className="font-display text-lg font-bold tracking-tight text-fg lg:text-xl">
-                  {a.title}
-                </h3>
-                <span className="ml-auto rounded-full border border-edge-strong px-3 py-1 text-[10px] font-semibold tracking-[0.15em] text-fg-dim uppercase">
-                  Scored {a.score}
-                </span>
+      {expanded && (
+        <div className="mt-8 border-t border-edge pt-8">
+          <ProofLabel>The one sentence the strategy is built on</ProofLabel>
+          <p className="mt-5 max-w-3xl border-l-2 border-gold pl-6 font-display text-xl font-bold leading-snug tracking-tight text-fg sm:text-2xl lg:text-3xl">
+            A burger a meat-eater orders on purpose &mdash; the plant-based
+            part is the twist, not the pitch.
+          </p>
+          <p className="mt-8 text-[11px] font-semibold tracking-[0.2em] text-fg-faint uppercase">
+            Ten angles scored &mdash; top three sequenced into a persuasion
+            arc
+          </p>
+          <div className="mt-5 space-y-4">
+            {ANGLES.map((a) => (
+              <div
+                key={a.rank}
+                className="rounded-2xl border border-edge bg-panel-2/60 p-5 lg:p-7"
+              >
+                <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
+                  <span className="font-display text-sm font-bold tracking-widest text-gold">
+                    {a.rank}
+                  </span>
+                  <h3 className="font-display text-lg font-bold tracking-tight text-fg lg:text-xl">
+                    {a.title}
+                  </h3>
+                  <span className="ml-auto rounded-full border border-edge-strong px-3 py-1 text-[10px] font-semibold tracking-[0.15em] text-fg-dim uppercase">
+                    Scored {a.score}
+                  </span>
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-fg-dim">
+                  {a.note}
+                </p>
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-fg-dim">
-                {a.note}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
 
-function Step3Content() {
+function Step3Content({ expanded = true, onToggle }: StepContentProps) {
   return (
     <div>
       <StepHeading
         n="04"
         title="10 shoot-ready scripts + a content calendar"
         body="Every month, you get ten production-ready scripts and a full calendar — hooks, shot lists, captions, all mapped to the strategy. Hand it to whoever's holding the camera."
+        expanded={expanded}
+        onToggle={onToggle}
       />
+      {expanded && (
       <div className="mt-8 border-t border-edge pt-8">
         <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
           <ProofLabel>
@@ -394,28 +438,33 @@ function Step3Content() {
           ))}
         </div>
       </div>
+      )}
     </div>
   );
 }
 
-function Step4Content() {
+function Step4Content({ expanded = true, onToggle }: StepContentProps) {
   return (
     <div>
       <StepHeading
         n="05"
         title="Influencer & UGC activation"
         badge="Optional add-on"
+        expanded={expanded}
+        onToggle={onToggle}
         body="Once the content system is running, we can plug you into our LA-based network of creators and everyday customers for influencer and user-generated content — real people, briefed on the same research, telling the same story from the outside in."
       />
-      <div className="mt-8 border-t border-edge pt-8">
-        <ProofLabel>How it plugs into the system</ProofLabel>
-        <p className="mt-5 max-w-3xl text-[15px] leading-relaxed text-fg-dim lg:text-base">
-          For Jerrell&apos;s, the plan calls for a burger reviewer, a
-          date-night creator, and a real-food creator &mdash; each opening on
-          the mechanism, never the word &ldquo;vegan.&rdquo; Same strategy,
-          same angles, told from the outside in.
-        </p>
-      </div>
+      {expanded && (
+        <div className="mt-8 border-t border-edge pt-8">
+          <ProofLabel>How it plugs into the system</ProofLabel>
+          <p className="mt-5 max-w-3xl text-[15px] leading-relaxed text-fg-dim lg:text-base">
+            For Jerrell&apos;s, the plan calls for a burger reviewer, a
+            date-night creator, and a real-food creator &mdash; each opening
+            on the mechanism, never the word &ldquo;vegan.&rdquo; Same
+            strategy, same angles, told from the outside in.
+          </p>
+        </div>
+      )}
     </div>
   );
 }
@@ -590,15 +639,20 @@ function StepsDeck() {
 /* ── Small screens: stacked reveal ── */
 
 function StepsStack() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-5">
       {STEP_CARDS.map((Content, i) => (
         <ScrollRevealCard
           key={i}
           className="relative rounded-3xl border border-edge bg-panel p-6 sm:p-8"
         >
           <GlowingEffect {...GLOW_PROPS} />
-          <Content />
+          <Content
+            expanded={openIndex === i}
+            onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+          />
         </ScrollRevealCard>
       ))}
     </div>

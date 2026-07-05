@@ -8,10 +8,27 @@ import { ButtonColorful } from "@/components/ui/button-colorful";
 import { TypewriterHeading } from "@/components/ui/typewriter-heading";
 import { TiltCard } from "@/components/ui/tilt-card";
 
+const TITLE = "Case Study — Jerrell's Betr Brgr — Sauced";
+const DESCRIPTION =
+  "How we're repositioning a plant-based burger spot in SoHo away from the vegan category and into the burger category.";
+
 export const metadata: Metadata = {
-  title: "Case Study — Jerrell's Betr Brgr — Sauced",
-  description:
-    "How we're repositioning a plant-based burger spot in SoHo away from the vegan category and into the burger category.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/case-study" },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/case-study",
+    type: "website",
+    images: [{ url: "/hero-poster.jpg", width: 1920, height: 1080 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/hero-poster.jpg"],
+  },
 };
 
 const ANGLES = [

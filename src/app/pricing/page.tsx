@@ -21,9 +21,27 @@ const GLOW_PROPS = {
   borderWidth: 2,
 };
 
+const TITLE = "Pricing — Sauced";
+const DESCRIPTION =
+  "One system, everything included. No production agency on the side.";
+
 export const metadata: Metadata = {
-  title: "Pricing — Sauced",
-  description: "One system, everything included. No production agency on the side.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/pricing" },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/pricing",
+    type: "website",
+    images: [{ url: "/hero-poster.jpg", width: 1920, height: 1080 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/hero-poster.jpg"],
+  },
 };
 
 export default function Pricing() {
@@ -42,6 +60,11 @@ export default function Pricing() {
 
           <section className="relative">
           <div className="mx-auto max-w-6xl px-6 py-16 lg:px-10 lg:py-20">
+            <div className="mx-auto mb-10 flex w-fit items-center gap-2 rounded-full border border-gold/40 px-4 py-2 text-[11px] font-semibold tracking-[0.15em] text-gold uppercase">
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+              Now accepting 5 founding partners this quarter
+            </div>
+
             <div className="grid gap-5 lg:grid-cols-2">
               {/* Founding offer card */}
               <TiltCard
@@ -68,6 +91,9 @@ export default function Pricing() {
                 <p className="mt-3 text-sm leading-relaxed text-fg-dim">
                   Full research pipeline, complete growth strategy, 10 scripts,
                   and a full content calendar — everything included.
+                </p>
+                <p className="mt-3 text-xs font-medium text-gold">
+                  Founding pricing — ends once this cohort is full.
                 </p>
                 <ButtonColorful asChild size="sm" className="mt-8">
                   <Link href="/apply">Apply now</Link>

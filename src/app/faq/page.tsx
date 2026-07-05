@@ -7,9 +7,26 @@ import { BackgroundPaths } from "@/components/ui/background-paths";
 import { ButtonColorful } from "@/components/ui/button-colorful";
 import FaqAccordion from "./FaqAccordion";
 
+const TITLE = "FAQ — Sauced";
+const DESCRIPTION = "Answers to the questions restaurant owners ask most.";
+
 export const metadata: Metadata = {
-  title: "FAQ — Sauced",
-  description: "Answers to the questions restaurant owners ask most.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/faq" },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/faq",
+    type: "website",
+    images: [{ url: "/hero-poster.jpg", width: 1920, height: 1080 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/hero-poster.jpg"],
+  },
 };
 
 export default function Faq() {
