@@ -4,6 +4,10 @@ import { useState } from "react";
 
 const FAQS = [
   {
+    q: "Why not just hire a marketing agency?",
+    a: "Most restaurant owners we talk to have already tried — and paid thousands of dollars for research and content that never got used, or a retainer that produced generic posts nobody could tie to actual sales. Sauced runs the same research and strategy work an agency would charge you five figures for, then hands you shoot-ready scripts you can film yourself, for a fraction of the cost. You're not buying a content subscription; you're buying the strategy work, with the execution included.",
+  },
+  {
     q: "Is this really AI-generated content?",
     a: "The research, strategy, and scripts are built by an AI system — but it's trained specifically on what makes restaurant marketing work, not a general-purpose writing tool. Every script is grounded in real research about your restaurant and your market, and it's reviewed before it reaches you. You're not getting generic AI copy; you're getting a research process that happens to run on AI, with production-ready output at the end.",
   },

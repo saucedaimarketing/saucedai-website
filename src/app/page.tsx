@@ -9,6 +9,7 @@ import { ButtonColorful } from "@/components/ui/button-colorful";
 import { TypewriterHeading } from "@/components/ui/typewriter-heading";
 import { TiltCard } from "@/components/ui/tilt-card";
 import { CountUp } from "@/components/ui/count-up";
+import { WhySaucedCard } from "@/components/WhySaucedCard";
 
 const TITLE = "Sauced — AI-Powered Restaurant Growth";
 const DESCRIPTION =
@@ -92,6 +93,58 @@ export default function Home() {
         <div className="relative">
           <BackgroundPaths />
 
+          {/* ── Why Sauced ── */}
+          <section className="relative border-t border-edge">
+            <div className="mx-auto max-w-6xl px-6 py-24 lg:px-10 lg:py-32">
+              <p className="text-[11px] font-semibold tracking-[0.3em] text-gold uppercase">
+                Why Sauced
+              </p>
+              <h2 className="mt-4 max-w-xl font-display text-5xl font-bold tracking-[-0.02em] text-fg sm:text-6xl">
+                Not another agency retainer.
+              </h2>
+
+              <div className="mt-16 grid gap-5 sm:grid-cols-3">
+                <WhySaucedCard
+                  icon="ban"
+                  title="Skip the agency retainer"
+                  index={0}
+                >
+                  Most owners have already paid thousands for a marketing
+                  company that didn&apos;t move the needle. Sauced gives
+                  you the same research and strategy for a fraction of
+                  that cost, plus scripts you can shoot yourself.
+                </WhySaucedCard>
+
+                <WhySaucedCard
+                  icon="search-check"
+                  title="Real research, not generic AI"
+                  index={1}
+                >
+                  This isn&apos;t a prompt that spits out generic captions.
+                  It&apos;s a research process that digs into your actual
+                  menu, your market, and your customer before a single
+                  script gets written.
+                </WhySaucedCard>
+
+                <WhySaucedCard
+                  icon="chef-hat"
+                  title="Built by restaurant people"
+                  index={2}
+                >
+                  We spent years behind the pass and out front before we
+                  built this. Sauced exists because we lived the problem
+                  first.{" "}
+                  <Link
+                    href="/about"
+                    className="text-gold underline-offset-4 hover:underline"
+                  >
+                    Read our story →
+                  </Link>
+                </WhySaucedCard>
+              </div>
+            </div>
+          </section>
+
           {/* ── How it works preview ── */}
           <section className="relative border-t border-edge">
           <div className="mx-auto max-w-6xl px-6 py-24 lg:px-10 lg:py-32">
@@ -155,9 +208,11 @@ export default function Home() {
             />
 
             <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row sm:items-baseline sm:gap-6">
-              <span className="text-lg text-fg-faint line-through">$2,800</span>
+              <span className="text-2xl text-fg-faint line-through sm:text-3xl">
+                $2,800
+              </span>
               <CountUp
-                value={2000}
+                value={1500}
                 prefix="$"
                 className="font-display text-6xl font-bold tracking-tight text-gold sm:text-7xl"
               />
@@ -165,7 +220,10 @@ export default function Home() {
                 first month, founding offer
               </span>
             </div>
-            <p className="mt-4 text-sm text-fg-dim">Then $2,400/month ongoing.</p>
+            <p className="mt-4 text-sm text-fg-dim">Then $500/month ongoing.</p>
+            <p className="mx-auto mt-5 max-w-md text-[13px] font-medium tracking-wide text-gold/80">
+              Deep research · A complete growth strategy · 10 shoot-ready scripts · A full content calendar
+            </p>
 
             <ButtonColorful asChild className="mt-10">
               <Link href="/pricing">See full pricing</Link>

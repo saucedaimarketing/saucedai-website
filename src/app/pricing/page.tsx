@@ -79,11 +79,8 @@ export default function Pricing() {
                   First month
                 </h2>
                 <div className="mt-6 flex items-baseline gap-3">
-                  <span className="text-lg text-fg-faint line-through">
-                    $2,800
-                  </span>
                   <CountUp
-                    value={2000}
+                    value={1500}
                     prefix="$"
                     className="font-display text-5xl font-bold tracking-tight text-gold"
                   />
@@ -111,7 +108,7 @@ export default function Pricing() {
                 </h2>
                 <div className="mt-6 flex items-baseline gap-2">
                   <CountUp
-                    value={2400}
+                    value={500}
                     prefix="$"
                     className="font-display text-5xl font-bold tracking-tight text-fg"
                   />
@@ -141,7 +138,16 @@ export default function Pricing() {
                   <span className="font-display text-3xl font-bold tracking-tight text-fg">
                     $1,200
                   </span>
-                  <span className="text-sm text-fg-dim">/month</span>
+                  <span className="text-sm text-fg-dim">first month</span>
+                </p>
+                <p className="mt-1 flex items-baseline gap-2">
+                  <span className="font-display text-xl font-bold tracking-tight text-fg">
+                    $400
+                  </span>
+                  <span className="text-sm text-fg-dim">/month after</span>
+                </p>
+                <p className="mt-3 text-xs font-medium text-gold">
+                  20% off both, for every location beyond your first.
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-fg-dim">
                   Run the full system for each additional location — its own

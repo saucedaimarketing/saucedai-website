@@ -53,7 +53,7 @@ const JSON_LD = {
     addressCountry: "US",
   },
   areaServed: "US",
-  priceRange: "$2000-$2400",
+  priceRange: "$500-$1500",
 };
 
 export default function RootLayout({
